@@ -28,7 +28,7 @@
     <motan:registry regProtocol="local" name="localRegistry" check="false" />
 
     <motan:registry regProtocol="consul" name="consul-registry"
-                    registryRetryPeriod="30000" registrySessionTimeout="10000"
+                    registryRetryPeriod="3000" registrySessionTimeout="10000"
                     requestTimeout="1000" port="8500" address="10.211.55.3"/>
     <!-- 协议配置。为防止多个业务配置冲突，推荐使用id表示具体协议。-->
     <motan:protocol id="motan2" default="true" name="motan2" serialization="simple"
@@ -45,7 +45,7 @@
                    ref="exampleBenchmarkServiceImpl" basicService="serviceBasicConfig" requestTimeout="200">
     </motan:service>
 
-    <motan:service interface="com.weibo.motan.HelloWorldService"
+    <motan:service interface="com.weibo.motan.HelloWorldService" registry="consul-registry" version="1.0"
                    ref="exampleHelloWorldServiceImpl" basicService="serviceBasicConfig" requestTimeout="200">
     </motan:service>
 

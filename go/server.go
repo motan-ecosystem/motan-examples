@@ -4,7 +4,7 @@ import (
 	"time"
 
 	motan "github.com/weibocom/motan-go"
-	services "github.com/motan-ecosystem/motan-examples/go/services"
+	services "github.com/motan-ecosystem/motan-examples/go/motan-services"
 )
 
 func main() {
