@@ -2,7 +2,6 @@ package main
 
 import (
 	motan "github.com/weibocom/motan-go"
-	motancore "github.com/weibocom/motan-go/core"
 )
 
 func main() {
