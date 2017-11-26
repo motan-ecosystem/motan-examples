@@ -35,11 +35,11 @@ motan-service:
     path: com.weibo.motan.HelloWorldService # e.g. service name for subscribe
     registry: direct-registry
     basicRefer: example_basic_service    
-    ref : "main.Motan2TestService"
+    ref : "services.HelloWorldService"
     export: "motan2:8100"
   golang-example-benchmark:
     path: com.weibo.motan.benchmark.BenchmarkService # e.g. service name for subscribe
     registry: direct-registry    
     basicRefer: example_basic_service # basic refer id
-    ref : "main.MotanDemoService"
+    ref : "services.BenchmarkService"
     export: "motan2:8100"

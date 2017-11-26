@@ -9,7 +9,7 @@ import (
 
 func main() {
 	mscontext := motan.GetMotanServerContext("./server.yaml")
-	mscontext.RegisterService(&services.HelloWorldService{}, "idevz.HelloWorldService")
+	mscontext.RegisterService(&services.HelloWorldService{}, "")
 	mscontext.RegisterService(&services.BenchmarkService{}, "")
 	mscontext.Start(nil)
 	time.Sleep(time.Second * 50000000)

@@ -1,9 +1,9 @@
-[motan.basicRefer.simple_rpc_ref]
-group=yf-api-core
+[motan.basicRefer.example_basic_ref]
+group=motan-go-example
 registry=vintage-online
 serialization=simple
 protocol=motan2
-version=0.1
+version=1
 requestTimeout=1000
 haStrategy=failover
 loadbalance=random
@@ -14,20 +14,14 @@ retries=0
 application=whos-agent
 
 [motan.refer.helloworld_service]
-group=idevz-test-static
 path=com.weibo.motan.HelloWorldService
 registry=consul-test-motan2
-protocol=motan2
-serialization=simple
-basicRefer=simple_rpc_ref
+basicRefer=example_basic_ref
 
 [motan.refer.bechmark_service]
-group=idevz-test-java
 path=com.weibo.motan.benchmark.BenchmarkService
 registry=consul-test-motan2
-protocol=motan2
-serialization=simple
-basicRefer=simple_rpc_ref
+basicRefer=example_basic_ref
 
 [motan.registry.consul-test-motan2]
 protocol=consul
