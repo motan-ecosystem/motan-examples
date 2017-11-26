@@ -1,9 +1,9 @@
-[motan.basicService.simple_rpc_service]
-group=yf-api-core
+[motan.basicService.example_base_service]
+group=motan-openresty-example
 registry=consul-test-motan2
-serialization=simple
+version=1
 protocol=motan2
-version=0.1
+serialization=simple
 requestTimeout=1000
 haStrategy=failover
 loadbalance=random
@@ -15,25 +15,16 @@ provider=motan
 application=idevz-test
 
 [motan.service.helloworld_service]
-group=idevz-test-static
+port=2234
+host=10.211.55.3
 path=com.weibo.motan.HelloWorldService
-registry=consul-test-motan2
-version=1
-port=1234
-protocol=motan2
-serialization=simple
-basicRefer=simple_rpc_service
+basicRefer=example_base_service
 
 [motan.service.bechmark_service]
-group=motan-benchmark-rpc
-path=com.weibo.motan.benchmark.BenchmarkService
-registry=consul-test-motan2
-version=1
-port=1234
+port=2234
 host=10.211.55.3
-protocol=motan2
-serialization=simple
-basicRefer=simple_rpc_service
+path=com.weibo.motan.benchmark.BenchmarkService
+basicRefer=example_base_service
 
 [motan.registry.consul-test-motan2]
 protocol=consul

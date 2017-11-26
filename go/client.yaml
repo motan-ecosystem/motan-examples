@@ -6,12 +6,10 @@ motan-client:
 
 #config of registries
 motan-registry:
-  direct-registry: # registry id 
+  registry-direct-motan-openresty: # registry id 
     protocol: direct   # registry type. will get instance from extFactory.
-    host: 127.0.0.1 # direct server ip in single ip. if has host, address will disable.    
-#    port: 9981 # use agent port
-    port: 8100 # use server direct
-    # address: "10.210.21.1:8002,10.210.21.2:8002" # direct server in multi ip
+    host: 10.211.55.3 # direct server ip in single ip. if has host, address will disable.  
+    port: 2234 # use server direct
 
   # zk-registry:
   #   protocol: zookeeper
@@ -35,10 +33,10 @@ motan-basicRefer:
 
 #conf of refers
 motan-refer:
-  golang-example-helloworld:
+  golang-example-helloworld-call-motan-openresty:
     path: com.weibo.motan.HelloWorldService # e.g. service name for subscribe
-    registry: direct-registry
-    # registry: zk-registry    
+    group: motan-openresty-example
+    registry: registry-direct-motan-openresty
     basicRefer: example_basic_refer # basic refer id
   golang-example-benchmark:
     path: com.weibo.motan.benchmark.BenchmarkService # e.g. service name for subscribe

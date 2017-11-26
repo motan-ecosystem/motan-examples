@@ -21,11 +21,15 @@ function _M.new(self, opts)
 end
 
 function _M.Hello(self, params)
-    local res = 
+    local res
     for k,v in pairs(params) do
-        res = "Motan OpenResty Lua: " .. k .. "---" .. v .. "\n"
+        res = "Motan OpenResty Lua: " .. k .. " ---> " .. v .. "\n"
     end
     return res
+end
+
+function _M.BigInt(self, big_int_byte)
+    return utils.unpack_request_id(big_int_byte) .. "\n" .. table.concat( {string.byte( big_int_byte, 1, -1 )}, ", " )
 end
 
 return _M

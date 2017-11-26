@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	mscontext := motan.GetMotanServerContext("./serverdemo.yaml")
+	mscontext := motan.GetMotanServerContext("./server.yaml")
 	mscontext.RegisterService(&services.HelloWorldService{}, "idevz.HelloWorldService")
 	mscontext.RegisterService(&services.BenchmarkService{}, "")
 	mscontext.Start(nil)
