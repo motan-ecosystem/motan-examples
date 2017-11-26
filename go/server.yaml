@@ -1,0 +1,45 @@
+#config fo server
+motan-server:
+  mport: 8002 # agent manage port
+  log_dir: "./serverlogs" 
+  application: "motan-server-example" # server identify. 
+
+#config of registries
+motan-registry:
+  direct-registry: # registry id 
+    protocol: direct   # registry type. will get instance from extFactory.
+    host: 127.0.0.1 # direct server ip in single ip. if has host, address will disable.
+    port: 8012 #direct server port
+    # address: "10.210.21.1:8002,10.210.21.2:8002" # direct server in multi ip
+
+  # zk-registry:
+  #   protocol: zookeeper
+  #   host: 10.210.235.157
+  #   port: 2181
+  #   registrySessionTimeout: 10000
+  #   requestTimeout: 5000 
+
+#conf of basic service
+motan-basicService:
+  example_basic_service: # basic refer id
+    group: motan-go-example # group name
+    protocol: motan2 # rpc protocol
+    registry: "direct-registry" # registry id
+    filter: "accessLog" # filter registed in extFactory
+    serialization: simple
+    nodeType: server
+
+#conf of services
+motan-service:
+  golang-example-helloworld:
+    path: com.weibo.motan.HelloWorldService # e.g. service name for subscribe
+    registry: direct-registry
+    basicRefer: example_basic_service    
+    ref : "main.Motan2TestService"
+    export: "motan2:8100"
+  golang-example-benchmark:
+    path: com.weibo.motan.benchmark.BenchmarkService # e.g. service name for subscribe
+    registry: direct-registry    
+    basicRefer: example_basic_service # basic refer id
+    ref : "main.MotanDemoService"
+    export: "motan2:8100"

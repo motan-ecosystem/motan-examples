@@ -1,0 +1,70 @@
+##only support 3 level config info
+#config fo agent
+motan-agent:
+  port: 9981 # agent serve port. 
+  mport: 8002 # agent manage port
+  log_dir: "./agentlogs" 
+  registry: "zk-registry" # registry id for registering agent info 
+  application: "ray-test" # agent identify. for agent command notify and so on  
+
+#config of registries
+motan-registry:
+  direct-registry: # registry id 
+    protocol: direct   # registry type. will get instance from extFactory.
+    host: 127.0.0.1 # direct server ip in single ip. if has host, address will disable.
+    port: 8100 #direct server port
+    # address: "10.210.21.1:8002,10.210.21.2:8002" # direct server in multi ip
+
+  # zk-registry:
+  #   protocol: zookeeper
+  #   host: 10.210.235.157
+  #   port: 2181
+  #   registrySessionTimeout: 10000
+  #   requestTimeout: 5000 
+
+#conf of basic services
+motan-basicService:
+  mesh-basicService:
+    group: yf-api-core
+    registry: direct-registry
+    serialization: simple
+    protocol: cgi
+    version: 0.1
+    requestTimeout: 1000
+    haStrategy: failover
+    loadbalance: random
+    filter: "accessLog,metrics"
+    maxClientConnection: 10
+    minClientConnection: 1
+    retries: 0
+    application: whos-agent #请求来源，用于在监控中标识请求的业务方，请各业务方务必修改成自己的标识，类似 APP_NAME
+
+#conf of services
+motan-service:
+  cgi-rpc-test:
+    group: idevz-test-static
+    path: com.weibo.idevz.mt.IService
+    registry: zk-test
+    # registry: direct-test
+    nodeType: server
+    protocol: motan2
+    export: "motan2:8100"
+    provider: cgi
+    CGI_HOST: 10.211.55.3
+    CGI_PORT: 9000
+    CGI_REQUEST_METHOD: GET
+    CGI_SCRIPT_FILENAME: /media/psf/g/idevz/code/www/motan-php-test/cgi.php
+    CGI_DOCUMENT_ROOT: /media/psf/g/idevz/code/www/motan-php-test
+    basicRefer: mesh-basicService
+  http-rpc-test:
+    group: idevz-test-static
+    path: com.weibo.idevz.mt.IServiceX
+    registry: zk-test
+    # registry: direct-test
+    nodeType: server
+    protocol: motan2
+    export: "motan2:8200"
+    provider: http
+    HTTP_REQUEST_METHOD: POST
+    HTTP_URL: http://10.211.55.3:9880
+    basicRefer: mesh-basicService

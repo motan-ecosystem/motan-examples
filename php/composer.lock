@@ -1,0 +1,51 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "e92fcc220394af12280c8c6f8cc00b88",
+    "content-hash": "0fc253832cdd034743f651fcbcdb0035",
+    "packages": [
+        {
+            "name": "motan/motan-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/weibocom/motan-php.git",
+                "reference": "3bf8403e80180ca763cbbe3180fcfcd87b7b9a0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/weibocom/motan-php/zipball/3bf8403e80180ca763cbbe3180fcfcd87b7b9a0c",
+                "reference": "3bf8403e80180ca763cbbe3180fcfcd87b7b9a0c",
+                "shasum": ""
+            },
+            "bin": [
+                "weibo-protoc-gen-php.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Motan\\": "src/Motan/"
+                }
+            },
+            "description": "Motan For PHP",
+            "support": {
+                "source": "https://github.com/weibocom/motan-php/tree/master",
+                "issues": "https://github.com/weibocom/motan-php/issues"
+            },
+            "time": "2017-11-02 04:28:53"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "motan/motan-php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,1 @@
+../motan/motan-php/weibo-protoc-gen-php.php

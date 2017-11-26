@@ -1,0 +1,21 @@
+{
+    "name": "weibocom/motan-php-example",
+    "description": "motan php example",
+    "type": "project",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "idevz",
+            "email": "idevz@idevz.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/weibocom/motan-php.git"
+        }
+    ],
+    "require": {
+        "motan/motan-php": "dev-master"
+    }
+}
