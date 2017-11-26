@@ -8,7 +8,7 @@ func (m *HelloWorldService) Hello(params map[string]string) string {
 	}
 	res:="\n"
 	for k, v := range params {
-		res = "Motan Golang: " + k + "---" + v + "\n"
+		res = "Motan Golang: " + k + " ---> " + v + "\n"
 	}
 	return res
 }

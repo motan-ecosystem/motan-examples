@@ -36,3 +36,4 @@ Thumbs.db
 logs/
 go/clientlogs/
 go/serverlogs/
+.vscode/
