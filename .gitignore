@@ -37,3 +37,5 @@ logs/
 go/clientlogs/
 go/serverlogs/
 .vscode/
+weibo-mesh/agent.pid
+weibo-mesh/mesh-logs/
