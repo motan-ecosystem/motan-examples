@@ -21,6 +21,9 @@ function _M.new(self, opts)
 end
 
 function _M.Hello(self, params)
+    if type(params) == "string" then
+        return "Motan OpenResty Lua: " .. params
+    end
     local res
     for k,v in pairs(params) do
         res = "Motan OpenResty Lua: " .. k .. " ---> " .. v .. "\n"
