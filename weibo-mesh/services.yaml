@@ -15,6 +15,10 @@ motan-registry:
     port: 8100 #direct server port
     # address: "10.210.21.1:8002,10.210.21.2:8002" # direct server in multi ip
 
+  registry-direct-motan-openresty: # registry id 
+    protocol: direct   # registry type. will get instance from extFactory.
+    host: 10.211.55.3 # direct server ip in single ip. if has host, address will disable.  
+    port: 2234 # use server direct
   # zk-registry:
   #   protocol: zookeeper
   #   host: 10.210.235.157
@@ -68,3 +72,25 @@ motan-service:
     HTTP_REQUEST_METHOD: GET
     HTTP_URL: http://10.211.55.3:9900/http_server
     basicRefer: mesh-server-basicService
+
+#conf of basic refers
+motan-basicRefer:
+  mesh-client-basicRefer: # basic refer id
+    group: motan-openresty-example
+    protocol: motan2 # rpc protocol
+    registry: registry-direct-motan-openresty
+    requestTimeout: 1000
+    haStrategy: failover
+    loadbalance: roundrobin
+    serialization: simple
+    filter: "accessLog" # filter registed in extFactory
+    retries: 0
+
+#conf of refers
+motan-refer:
+  mesh-helloworld-call-motan-openresty:
+    path: com.weibo.motan.HelloWorldService # e.g. service name for subscribe
+    basicRefer: mesh-client-basicRefer # basic refer id
+  mesh-benchmark-call-motan-openresty:
+    path: com.weibo.motan.benchmark.BenchmarkService # e.g. service name for subscribe
+    basicRefer: mesh-client-basicRefer # basic refer id
