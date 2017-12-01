@@ -7,11 +7,11 @@ local ffi = require 'ffi'
 local C = ffi.C
 
 ffi.cdef[[
-    int ngx_http_lua_ffi_worker_pid(void);
+    int ngx_http_lua_ffi_worker_count(void);
 ]]
 
-function get_worker_pid()
-    return C.ngx_http_lua_ffi_worker_pid()
+function get_worker_count()
+    return C.ngx_http_lua_ffi_worker_count()
 end
 
 -- @TODO JAVA Consul PUT
@@ -19,5 +19,5 @@ end
 -- local client = client_map["java_helloworld_service"]
 local client = client_map["helloworld_service"]
 local bytes = table.concat( {string.byte( utils.pack_request_id("111111"), 1, -1 )}, ", " )
-local res = client:Hello({name="idevz\n" .. get_worker_pid() .. "\n" .. bytes})
+local res = client:Hello({name="idevz\n" .. get_worker_count() .. "\n" .. bytes})
 ngx.say(res)
