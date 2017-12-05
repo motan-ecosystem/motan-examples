@@ -36,6 +36,11 @@
       <version>${motan.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.weibo</groupId>
+      <artifactId>motan-protocol-yar</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+    <dependency>
         <groupId>com.ecwid.consul</groupId>
         <artifactId>consul-api</artifactId>
         <version>1.3.0</version>
